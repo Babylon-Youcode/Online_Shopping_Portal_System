@@ -26,16 +26,16 @@ class AdminController extends Controller
         if(isset($result['0']->id)){
             $request->session()->put('ADMIN_LOGIN',true);
             $request->session()->put('ADMIN_LOGIN',$result['0']->id);
-            return redirect('admin/dashbord');
+            return redirect('admin/dashboard');
         }else{
             $request->session()->flash('error','please enter valid login details');
             return redirect('admin');
         }
     }
 
-    public function dashbord()
+    public function dashboard()
     {
-        return view('admin.dashbord');
+        return view('admin.dashboard');
     }
 
 }
