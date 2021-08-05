@@ -37,6 +37,10 @@
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password" required>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                                
+                                <div class="alert alert-danger" role="alert">
+								  {{session('error')}}
+								</div>
                             </form>
                         </div>
                     </div>
