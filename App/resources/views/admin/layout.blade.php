@@ -34,37 +34,30 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li>
+
+                        <li class="@yield('dashboard_select')">
                             <a href="{{url('admin/dashboard')}}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                        
-                        <li>
+                        <li class="@yield('category_select')">
                             <a href="{{url('admin/category')}}">
                                 <i class="fa fa-list-alt"></i>Category</a>
                         </li>
-                        <li>
+
+                        <li class="@yield('coupon_select')">
                             <a href="{{url('admin/coupon')}}">
                             <i class="fas fa-tags"></i>Coupon</a>
+                        </li> 
+                        
+                        <li class="@yield('color_select')">
+                            <a href="{{url('admin/color')}}">
+                            <i class="fas fa-calendar-alt"></i>Color</a>
+                        </li>
+
                         <li>
                             <a href="dashboard">
                                 <i class="fas fa-band-aid"></i>brand</a>
-                        </li>
-                        <li>
-                            <a href="dashboard">
-                                <i class="fas fa-calendar-alt"></i>a</a>
-                        </li>
-                        <li>
-                            <a href="dashboard">
-                                <i class="fas fa-map-marker-alt"></i>b</a>
-                        </li>
-                        <li >
-                            <a class="js-arrow" href="dashboard">
-                                <i class="fas fa-copy"></i>c</a>
-                        </li>
-                        <li >
-                            <a class="js-arrow" href="dashboard">
-                                <i class="fas fa-desktop"></i>d</a>
                         </li>
                     </ul>
                 </div>
@@ -82,6 +75,7 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
+
                         <li class="@yield('dashboard_select')">
                             <a href="{{url('admin/dashboard')}}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
@@ -91,29 +85,22 @@
                             <a href="{{url('admin/category')}}">
                                 <i class="fa fa-list-alt"></i>Category</a>
                         </li>
+
                         <li class="@yield('coupon_select')">
                             <a href="{{url('admin/coupon')}}">
                             <i class="fas fa-tags"></i>Coupon</a>
+                        </li> 
+                        
+                        <li class="@yield('color_select')">
+                            <a href="{{url('admin/color')}}">
+                            <i class="fas fa-paint-brush"></i>Color</a>
+                        </li>
+
                         <li>
                             <a href="dashboard">
                                 <i class="fas fa-band-aid"></i>brand</a>
                         </li>
-                        <li>
-                            <a href="dashboard">
-                                <i class="fas fa-calendar-alt"></i>a</a>
-                        </li>
-                        <li>
-                            <a href="dashboard">
-                                <i class="fas fa-map-marker-alt"></i>b</a>
-                        </li>
-                        <li >
-                            <a class="js-arrow" href="dashboard">
-                                <i class="fas fa-copy"></i>c</a>
-                        </li>
-                        <li >
-                            <a class="js-arrow" href="dashboard">
-                                <i class="fas fa-desktop"></i>d</a>
-                        </li>
+
                     </ul>
                 </nav>
             </div>
