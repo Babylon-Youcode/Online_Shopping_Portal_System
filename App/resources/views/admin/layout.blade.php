@@ -34,18 +34,18 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="active has-sub">
-                            <a href="dashboard">
+                        <li>
+                            <a href="{{url('admin/dashboard')}}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
+                       
                         <li>
-                            <a href="category">
-                                <i class="fa fa-list-alt"></i>category</a>
+                            <a href="{{url('admin/category')}}">
+                                <i class="fa fa-list-alt"></i>Category</a>
                         </li>
                         <li>
-                            <a href="dashboard">
-                                <i class="fab fa-product-hunt"></i>product</a>
-                        </li>
+                            <a href="{{url('admin/coupon')}}">
+                            <i class="fas fa-tags"></i>Coupon</a>
                         <li>
                             <a href="dashboard">
                                 <i class="fas fa-band-aid"></i>brand</a>
@@ -82,18 +82,18 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a href="dashboard">
+                        <li class="@yield('dashboard_select')">
+                            <a href="{{url('admin/dashboard')}}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li>
-                            <a href="category">
-                                <i class="fa fa-list-alt"></i>category</a>
+                       
+                        <li class="@yield('category_select')">
+                            <a href="{{url('admin/category')}}">
+                                <i class="fa fa-list-alt"></i>Category</a>
                         </li>
-                        <li>
-                            <a href="dashboard">
-                                <i class="fab fa-product-hunt"></i>product</a>
-                        </li>
+                        <li class="@yield('coupon_select')">
+                            <a href="{{url('admin/coupon')}}">
+                            <i class="fas fa-tags"></i>Coupon</a>
                         <li>
                             <a href="dashboard">
                                 <i class="fas fa-band-aid"></i>brand</a>
@@ -146,7 +146,7 @@
                                                 
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="logout">
+                                                <a href="{{url('admin/logout')}}">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
