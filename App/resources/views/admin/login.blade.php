@@ -21,7 +21,7 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                            {{Config::get('constants.site_name')}}
+                                <img src="{{asset('admin_assets/images/logo.png')}}"alt="KhaliPhone">
                             </a>
                         </div>
                         <div class="login-form">
