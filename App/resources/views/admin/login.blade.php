@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,9 +39,14 @@
                                 
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
                                 
+                                @if(session()->has('error'))
                                 <div class="alert alert-danger" role="alert">
-                                     {{session('error')}}		
-							    </div>
+                                        {{session('error')}}  
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div> 
+                                    @endif
                             </form>
                         </div>
                     </div>

@@ -40,6 +40,11 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                        
+                        <li class="@yield('product_select')">
+                            <a href="{{url('admin/product')}}">
+                            <i class="fa fa-tag"></i>Product</a>
+                        </li>
+
                         <li class="@yield('category_select')">
                             <a href="{{url('admin/category')}}">
                                 <i class="fa fa-list-alt"></i>Category</a>
@@ -80,6 +85,11 @@
                             <a href="{{url('admin/dashboard')}}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
+
+                        <li class="@yield('product_select')">
+                            <a href="{{url('admin/product')}}">
+                            <i class="fa fa-tag"></i>Product</a>
+                        </li>
                        
                         <li class="@yield('category_select')">
                             <a href="{{url('admin/category')}}">
@@ -98,7 +108,7 @@
 
                         <li>
                             <a href="dashboard">
-                                <i class="fas fa-band-aid"></i>brand</a>
+                            <i class="fas fa-band-aid"></i>brand</a>
                         </li>
 
                     </ul>
