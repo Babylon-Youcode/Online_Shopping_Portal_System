@@ -60,9 +60,9 @@
                             <i class="fas fa-calendar-alt"></i>Color</a>
                         </li>
 
-                        <li>
-                            <a href="dashboard">
-                                <i class="fas fa-band-aid"></i>brand</a>
+                        <li class="@yield('brand_select')">
+                            <a href="{{url('admin/brand')}}">
+                            <i class="fas fa-band-aid"></i>brand</a>
                         </li>
                     </ul>
                 </div>
@@ -106,8 +106,8 @@
                             <i class="fas fa-paint-brush"></i>Color</a>
                         </li>
 
-                        <li>
-                            <a href="dashboard">
+                        <li class="@yield('brand_select')">
+                            <a href="{{url('admin/brand')}}">
                             <i class="fas fa-band-aid"></i>brand</a>
                         </li>
 

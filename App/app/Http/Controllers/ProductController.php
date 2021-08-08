@@ -82,8 +82,9 @@ class ProductController extends Controller
         die();*/
         $result['category']=DB::table('categories')->where(['status'=>1])->get();
 
-
         $result['colors']=DB::table('colors')->where(['status'=>1])->get();
+
+        $result['brands']=DB::table('brands')->where(['status'=>1])->get();
         return view('admin/manage_product',$result);
     }
 
@@ -158,9 +159,9 @@ class ProductController extends Controller
         foreach($skuArr as $key=>$val){
             $productAttrArr['products_id']=$pid;
             $productAttrArr['sku']=$skuArr[$key];
-            $productAttrArr['mrp']=$mrpArr[$key];
-            $productAttrArr['price']=$priceArr[$key];
-            $productAttrArr['qty']=$qtyArr[$key];
+            $productAttrArr['mrp']=(int)$mrpArr[$key];
+            $productAttrArr['price']=(int)$priceArr[$key];
+            $productAttrArr['qty']=(int)$qtyArr[$key];
 
             if($color_idArr[$key]==''){
                 $productAttrArr['color_id']=0;

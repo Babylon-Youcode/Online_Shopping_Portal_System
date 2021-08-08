@@ -97,7 +97,18 @@ Back
                            </div>
                            <div class="col-md-4">
                               <label for="brand" class="control-label mb-1"> Brand</label>
-                              <input id="brand" value="{{$brand}}" name="brand" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                              <select id="brand" name="brand" class="form-control" required>
+                                 <option value="">Select Brand</option>
+                                 @foreach($brands as $list)
+                                 @if($brand==$list->id)
+                                 <option selected value="{{$list->id}}">
+                                    @else
+                                 <option value="{{$list->id}}">
+                                    @endif
+                                    {{$list->name}}
+                                 </option>
+                                 @endforeach
+                              </select>
                            </div>
                            <div class="col-md-4">
                               <label for="model" class="control-label mb-1"> Model</label>
@@ -147,12 +158,12 @@ Back
                         $pIArr=(array)$val;
                         @endphp
                         <input id="piid" type="hidden" name="piid[]" value="{{$pIArr['id']}}">
-                        <div class="col-md-4 product_images_{{$loop_count_num++}}"  >
+                        <div class="col-md-4  product_images_{{$loop_count_num++}}"  >
                               <label for="images" class="control-label mb-1"> Image</label>
-                              <input id="images" name="images[]" type="file" class="form-control" aria-required="true" aria-invalid="false" >
+                              <input id="images" name="images[]" type="file" class="form-control mb-1" aria-required="true" aria-invalid="false" >
 
                               @if($pIArr['images']!='')
-                                 <a href="{{asset('storage/media/'.$pIArr['images'])}}" target="_blank"><img width="100px" src="{{asset('storage/media/'.$pIArr['images'])}}"/></a>
+                                 <a href="{{asset('storage/media/'.$pIArr['images'])}}" class="my-4" target="_blank"><img width="100px" src="{{asset('storage/media/'.$pIArr['images'])}}"/></a>
                               @endif
                            </div>
                            
@@ -161,10 +172,10 @@ Back
                               &nbsp;&nbsp;&nbsp;</label>
                               
                               @if($loop_count_num==2)
-                                <button type="button" class="btn btn-success btn-lg" onclick="add_image_more()">
+                                <button type="button" class="btn btn-success btn-lg my-4" onclick="add_image_more()">
                                 <i class="fa fa-plus"></i>&nbsp; Add</button>
                               @else
-                              <a href="{{url('admin/product/product_images_delete/')}}/{{$pIArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg">
+                              <a href="{{url('admin/product/product_images_delete/')}}/{{$pIArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg my-">
                                 <i class="fa fa-minus"></i>&nbsp; Remove</button></a>
                               @endif  
 
@@ -197,11 +208,11 @@ Back
                            </div>
                            <div class="col-md-2">
                               <label for="mrp" class="control-label mb-1"> MRP</label>
-                              <input id="mrp" name="mrp[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{{$pAArr['mrp']}}" required>
+                              <input id="mrp" name="mrp[]" type="number" class="form-control" aria-required="true" aria-invalid="false" value="{{$pAArr['mrp']}}" required>
                            </div>
                            <div class="col-md-2">
                               <label for="price" class="control-label mb-1"> Price</label>
-                              <input id="price" name="price[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{{$pAArr['price']}}" required>
+                              <input id="price" name="price[]" type="number" class="form-control" aria-required="true" aria-invalid="false" value="{{$pAArr['price']}}" required>
                            </div>
                            
                            <div class="col-md-3">
@@ -219,14 +230,14 @@ Back
                            </div>
                            <div class="col-md-2">
                               <label for="qty" class="control-label mb-1"> Qty</label>
-                              <input id="qty" name="qty[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{{$pAArr['qty']}}" required>
+                              <input id="qty" name="qty[]" type="number" class="form-control" aria-required="true" aria-invalid="false" value="{{$pAArr['qty']}}" required>
                            </div>
                            <div class="col-md-4">
                               <label for="attr_image" class="control-label mb-1"> Image</label>
-                              <input id="attr_image" name="attr_image[]" type="file" class="form-control" aria-required="true" aria-invalid="false" >
+                              <input id="attr_image" name="attr_image[]" type="file" class="form-control " aria-required="true" aria-invalid="false" >
 
                               @if($pAArr['attr_image']!='')
-                                 <img width="100px" src="{{asset('storage/media/'.$pAArr['attr_image'])}}"/>
+                                 <img width="100px" class="my-4" src="{{asset('storage/media/'.$pAArr['attr_image'])}}"/>
                               @endif
                            </div>
                            <div class="col-md-2">
@@ -234,7 +245,7 @@ Back
                               &nbsp;&nbsp;&nbsp;</label>
                               
                               @if($loop_count_num==2)
-                                <button type="button" class="btn btn-success btn-lg" onclick="add_more()">
+                                <button type="button" class="btn btn-success btn-lg my-4" onclick="add_more()">
                                 <i class="fa fa-plus"></i>&nbsp; Add</button>
                               @else
                               <a href="{{url('admin/product/product_attr_delete/')}}/{{$pAArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg">

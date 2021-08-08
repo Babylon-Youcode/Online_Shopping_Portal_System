@@ -2,9 +2,9 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CouponController;
-use App\Http\Controllers\SizeController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BrandController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +27,7 @@ Route::post('admin/auth',[AdminController::class,'auth'])->name('admin.auth');
 Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/dashboard',[AdminController::class,'dashboard']);
 
+    
     Route::get('admin/category',[CategoryController::class,'index']);
     Route::get('admin/category/manage_category',[CategoryController::class,'manage_category']);
     Route::get('admin/category/manage_category/{id}',[CategoryController::class,'manage_category']);
@@ -34,12 +35,14 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/category/delete/{id}',[CategoryController::class,'delete']);
     Route::get('admin/category/status/{status}/{id}',[CategoryController::class,'status']);
 
+
     Route::get('admin/coupon',[CouponController::class,'index']);
     Route::get('admin/coupon/manage_coupon',[CouponController::class,'manage_coupon']);
     Route::get('admin/coupon/manage_coupon/{id}',[CouponController::class,'manage_coupon']);
     Route::post('admin/coupon/manage_coupon_process',[CouponController::class,'manage_coupon_process'])->name('coupon.manage_coupon_process');
     Route::get('admin/coupon/delete/{id}',[CouponController::class,'delete']);
     Route::get('admin/coupon/status/{status}/{id}',[CouponController::class,'status']);
+ 
 
     Route::get('admin/color',[ColorController::class,'index']);
     Route::get('admin/color/manage_color',[ColorController::class,'manage_color']);
@@ -55,8 +58,15 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::post('admin/product/manage_producty_process',[ProductController::class,'manage_product_process'])->name('product.manage_product_process');
     Route::get('admin/product/delete/{id}',[ProductController::class,'delete']);
     Route::get('admin/product/status/{status}/{id}',[ProductController::class,'status']);
-    Route::get('admin/product/product_attr_delete/{id}/{pid}',[ProductController::class,'product_attr_delete']);
-    Route::get('admin/product/product_images_delete/{id}/{pid}',[ProductController::class,'product_images_delete']);
+    Route::get('admin/product/product_attr_delete/{paid}/{pid}',[ProductController::class,'product_attr_delete']);
+    Route::get('admin/product/product_images_delete/{paid}/{pid}',[ProductController::class,'product_images_delete']);
+
+    Route::get('admin/brand',[BrandController::class,'index']);
+    Route::get('admin/brand/manage_brand',[BrandController::class,'manage_brand']);
+    Route::get('admin/brand/manage_brand/{id}',[BrandController::class,'manage_brand']);
+    Route::post('admin/brand/manage_brand_process',[BrandController::class,'manage_brand_process'])->name('brand.manage_brand_process');
+    Route::get('admin/brand/delete/{id}',[BrandController::class,'delete']);
+    Route::get('admin/brand/status/{status}/{id}',[BrandController::class,'status']);
     
     
     Route::get('admin/logout', function () {
