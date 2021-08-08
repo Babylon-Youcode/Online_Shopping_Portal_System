@@ -9,3 +9,10 @@ CREATE TABLE `products_attr` (
   `qty` int(11) NOT NULL,
   `color_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `product_images` (
+  `id` int(11) NOT NULL,
+  `products_id` int(11) NOT NULL,
+  `images` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
