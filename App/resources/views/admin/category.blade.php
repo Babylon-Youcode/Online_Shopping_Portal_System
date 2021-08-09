@@ -12,7 +12,7 @@
     @endif                     
     <h1 class="mb10">Category</h1>
     <a href="{{url('admin/category/manage_category')}}">
-        <button type="button" class="btn btn-success">
+        <button type="button" class="au-btn au-btn--block au-btn--green mb-20 my-4"">
             Add Category
         </button>
     </a>

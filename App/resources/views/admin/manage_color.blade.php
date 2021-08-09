@@ -4,7 +4,7 @@
 @section('container')
     <h1 class="mb10">Manage Color</h1>
     <a href="{{url('admin/color')}}">
-        <button type="button" class="btn btn-success">
+        <button type="button" class="btn btn-lg btn-info btn-block">
             Back
         </button>
     </a>

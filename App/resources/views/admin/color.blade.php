@@ -12,7 +12,7 @@
     @endif                           
     <h1 class="mb10">Color</h1>
     <a href="{{url('admin/color/manage_color')}}">
-        <button type="button" class="btn btn-success">
+        <button type="button" class="au-btn au-btn--block au-btn--green mb-20 my-4"">
             Add Color
         </button>
     </a>

@@ -60,9 +60,9 @@
                             <i class="fas fa-calendar-alt"></i>Color</a>
                         </li>
 
-                        <li class="@yield('brand_select')">
-                            <a href="{{url('admin/brand')}}">
-                            <i class="fas fa-band-aid"></i>brand</a>
+                        <li>
+                            <a href="dashboard">
+                                <i class="fas fa-band-aid"></i>brand</a>
                         </li>
                     </ul>
                 </div>

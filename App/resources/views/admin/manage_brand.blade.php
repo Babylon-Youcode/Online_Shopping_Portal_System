@@ -22,7 +22,7 @@
 @enderror
     <h1 class="mb10">Manage Brand</h1>
     <a href="{{url('admin/brand')}}">
-        <button type="button" class="btn btn-success">
+        <button type="button" class="btn btn-lg btn-info btn-block">
             Back
         </button>
     </a>

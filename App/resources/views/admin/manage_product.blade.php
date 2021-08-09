@@ -39,7 +39,7 @@
 </div> 
 @enderror
 <a href="{{url('admin/product')}}">
-<button type="button" class="btn btn-success">
+<button type="button" class="btn btn-lg btn-info btn-block">
 Back
 </button>
 </a>
@@ -172,10 +172,10 @@ Back
                               &nbsp;&nbsp;&nbsp;</label>
                               
                               @if($loop_count_num==2)
-                                <button type="button" class="btn btn-success btn-lg my-4" onclick="add_image_more()">
+                                <button type="button" class="au-btn au-btn--block au-btn--green mb-20 " onclick="add_image_more()">
                                 <i class="fa fa-plus"></i>&nbsp; Add</button>
                               @else
-                              <a href="{{url('admin/product/product_images_delete/')}}/{{$pIArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg my-">
+                              <a href="{{url('admin/product/product_images_delete/')}}/{{$pIArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg my-4">
                                 <i class="fa fa-minus"></i>&nbsp; Remove</button></a>
                               @endif  
 
@@ -245,10 +245,10 @@ Back
                               &nbsp;&nbsp;&nbsp;</label>
                               
                               @if($loop_count_num==2)
-                                <button type="button" class="btn btn-success btn-lg my-4" onclick="add_more()">
+                                <button type="button" class="au-btn au-btn--block au-btn--green mb-20 " my-4" onclick="add_more()">
                                 <i class="fa fa-plus"></i>&nbsp; Add</button>
                               @else
-                              <a href="{{url('admin/product/product_attr_delete/')}}/{{$pAArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg">
+                              <a href="{{url('admin/product/product_attr_delete/')}}/{{$pAArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg my-4">
                                 <i class="fa fa-minus"></i>&nbsp; Remove</button></a>
                               @endif  
 
@@ -290,7 +290,7 @@ Back
 
        html+='<div class="col-md-4"><label for="attr_image" class="control-label mb-1"> Image</label><input id="attr_image" name="attr_image[]" type="file" class="form-control" aria-required="true" aria-invalid="false" ></div>';
 
-       html+='<div class="col-md-2"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger btn-lg" onclick=remove_more("'+loop_count+'")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>'; 
+       html+='<div class="col-md-2"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger btn-lg my-4" onclick=remove_more("'+loop_count+'")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>'; 
 
        html+='</div></div></div></div>';
 
@@ -305,7 +305,7 @@ Back
       loop_image_count++;
       var html='<input id="piid" type="hidden" name="piid[]" value=""><div class="col-md-4 product_images_'+loop_image_count+'"><label for="images" class="control-label mb-1"> Image</label><input id="images" name="images[]" type="file" class="form-control" aria-required="true" aria-invalid="false" ></div>';
       //product_images_box
-       html+='<div class="col-md-2 product_images_'+loop_image_count+'""><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger btn-lg" onclick=remove_image_more("'+loop_image_count+'")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>'; 
+       html+='<div class="col-md-2 product_images_'+loop_image_count+'""><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger btn-lg my-4" onclick=remove_image_more("'+loop_image_count+'")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>'; 
        jQuery('#product_images_box').append(html)
    }
 
