@@ -43,6 +43,7 @@
 Back
 </button>
 </a>
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 <div class="row m-t-30">
    <div class="col-md-12">
       <form action="{{route('product.manage_product_process')}}" method="post" enctype="multipart/form-data">
@@ -96,7 +97,7 @@ Back
                               </select>
                            </div>
                            <div class="col-md-4">
-                              <label for="brand" class="control-label mb-1"> Brand</label>
+                              <label for="category_id" class="control-label mb-1"> Brand</label>
                               <select id="brand" name="brand" class="form-control" required>
                                  <option value="">Select Brand</option>
                                  @foreach($brands as $list)
@@ -140,6 +141,84 @@ Back
                         <label for="warranty" class="control-label mb-1"> Warranty</label>
                         <textarea id="warranty" name="warranty" type="text" class="form-control" aria-required="true" aria-invalid="false" required>{{$warranty}}</textarea>
                      </div>
+
+                     <div class="form-group">
+                        <div class="row">
+                           <div class="col-md-8">
+                              <label for="model" class="control-label mb-1"> Lead Time</label>
+                              <input id="lead_time" value="{{$lead_time}}" name="lead_time" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                           </div>
+                           <div class="col-md-4">
+                              <label for="model" class="control-label mb-1"> Tax</label>
+                              <select id="tax_id" name="tax_id" class="form-control" required>
+                                 <option value="">Select Tax</option>
+                                 @foreach($taxes as $list)
+                                 @if($tax_id==$list->id)
+                                 <option selected value="{{$list->id}}">
+                                    @else
+                                 <option value="{{$list->id}}">
+                                    @endif
+                                    {{$list->tax_desc}}
+                                 </option>
+                                 @endforeach
+                              </select>
+                           </div>
+                          
+                        </div>
+                     </div>
+
+                     <div class="form-group">
+                        <div class="row">
+                           <div class="col-md-3">
+                              <label for="model" class="control-label mb-1"> IS Promo	</label>
+                              <select id="is_promo" name="is_promo" class="form-control" required>
+                     @if($is_promo=='1')
+                     <option value="1" selected>Yes</option>
+                     <option value="0">No</option>
+                     @else
+                     <option value="1">Yes</option>
+                     <option value="0" selected>No</option>
+                     @endif
+                              </select>
+                           </div>
+                           <div class="col-md-3">
+                              <label for="model" class="control-label mb-1"> IS Featured	</label>
+                              <select id="is_featured" name="is_featured" class="form-control" required>
+                     @if($is_featured=='1')
+                     <option value="1" selected>Yes</option>
+                     <option value="0">No</option>
+                     @else
+                     <option value="1">Yes</option>
+                     <option value="0" selected>No</option>
+                     @endif
+                              </select>
+                           </div>
+                           <div class="col-md-3">
+                              <label for="model" class="control-label mb-1"> IS Tranding	</label>
+                              <select id="is_tranding" name="is_tranding" class="form-control" required>
+                     @if($is_tranding=='1')
+                     <option value="1" selected>Yes</option>
+                     <option value="0">No</option>
+                     @else
+                     <option value="1">Yes</option>
+                     <option value="0" selected>No</option>
+                     @endif
+                              </select>
+                           </div>
+                           <div class="col-md-3">
+                              <label for="model" class="control-label mb-1"> IS Discounted	</label>
+                              <select id="is_discounted" name="is_discounted" class="form-control" required>
+                     @if($is_discounted=='1')
+                     <option value="1" selected>Yes</option>
+                     <option value="0">No</option>
+                     @else
+                     <option value="1">Yes</option>
+                     <option value="0" selected>No</option>
+                     @endif
+                              </select>
+                           </div>
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>
@@ -158,12 +237,12 @@ Back
                         $pIArr=(array)$val;
                         @endphp
                         <input id="piid" type="hidden" name="piid[]" value="{{$pIArr['id']}}">
-                        <div class="col-md-4  product_images_{{$loop_count_num++}}"  >
+                        <div class="col-md-4 product_images_{{$loop_count_num++}}"  >
                               <label for="images" class="control-label mb-1"> Image</label>
-                              <input id="images" name="images[]" type="file" class="form-control mb-1" aria-required="true" aria-invalid="false" >
+                              <input id="images" name="images[]" type="file" class="form-control" aria-required="true" aria-invalid="false" >
 
                               @if($pIArr['images']!='')
-                                 <a href="{{asset('storage/media/'.$pIArr['images'])}}" class="my-4" target="_blank"><img width="100px" src="{{asset('storage/media/'.$pIArr['images'])}}"/></a>
+                                 <a href="{{asset('storage/media/'.$pIArr['images'])}}" target="_blank"><img width="100px" src="{{asset('storage/media/'.$pIArr['images'])}}"/></a>
                               @endif
                            </div>
                            
@@ -172,10 +251,10 @@ Back
                               &nbsp;&nbsp;&nbsp;</label>
                               
                               @if($loop_count_num==2)
-                                <button type="button" class="au-btn au-btn--block au-btn--green mb-20 " onclick="add_image_more()">
+                                <button type="button" class="au-btn au-btn--block au-btn--green mb-20" onclick="add_image_more()">
                                 <i class="fa fa-plus"></i>&nbsp; Add</button>
                               @else
-                              <a href="{{url('admin/product/product_images_delete/')}}/{{$pIArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg my-4">
+                              <a href="{{url('admin/product/product_images_delete/')}}/{{$pIArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg">
                                 <i class="fa fa-minus"></i>&nbsp; Remove</button></a>
                               @endif  
 
@@ -234,10 +313,10 @@ Back
                            </div>
                            <div class="col-md-4">
                               <label for="attr_image" class="control-label mb-1"> Image</label>
-                              <input id="attr_image" name="attr_image[]" type="file" class="form-control " aria-required="true" aria-invalid="false" >
+                              <input id="attr_image" name="attr_image[]" type="file" class="form-control" aria-required="true" aria-invalid="false" >
 
                               @if($pAArr['attr_image']!='')
-                                 <img width="100px" class="my-4" src="{{asset('storage/media/'.$pAArr['attr_image'])}}"/>
+                                 <img width="100px" src="{{asset('storage/media/'.$pAArr['attr_image'])}}" class="my-4"/>
                               @endif
                            </div>
                            <div class="col-md-2">
@@ -245,7 +324,7 @@ Back
                               &nbsp;&nbsp;&nbsp;</label>
                               
                               @if($loop_count_num==2)
-                                <button type="button" class="au-btn au-btn--block au-btn--green mb-20 " my-4" onclick="add_more()">
+                                <button type="button" class="au-btn au-btn--block au-btn--green mb-20" onclick="add_more()">
                                 <i class="fa fa-plus"></i>&nbsp; Add</button>
                               @else
                               <a href="{{url('admin/product/product_attr_delete/')}}/{{$pAArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg my-4">
@@ -269,48 +348,4 @@ Back
       </form>
    </div>
 </div>
-<script>
-   var loop_count=1; 
-   function add_more(){
-       loop_count++;
-       var html='<input id="paid" type="hidden" name="paid[]" ><div class="card" id="product_attr_'+loop_count+'"><div class="card-body"><div class="form-group"><div class="row">';
-
-       html+='<div class="col-md-2"><label for="sku" class="control-label mb-1"> SKU</label><input id="sku" name="sku[]" type="text" class="form-control" aria-required="true" aria-invalid="false" required></div>'; 
-
-       html+='<div class="col-md-2"><label for="mrp" class="control-label mb-1"> MRP</label><input id="mrp" name="mrp[]" type="text" class="form-control" aria-required="true" aria-invalid="false" required></div>'; 
-
-       html+='<div class="col-md-2"><label for="price" class="control-label mb-1"> Price</label><input id="price" name="price[]" type="text" class="form-control" aria-required="true" aria-invalid="false" required></div>';
-
-       
-       var color_id_html=jQuery('#color_id').html(); 
-       color_id_html = color_id_html.replace("selected", "");
-       html+='<div class="col-md-3"><label for="color_id" class="control-label mb-1"> Color</label><select id="color_id" name="color_id[]" class="form-control" >'+color_id_html+'</select></div>';
-
-       html+='<div class="col-md-2"><label for="qty" class="control-label mb-1"> Qty</label><input id="qty" name="qty[]" type="text" class="form-control" aria-required="true" aria-invalid="false" required></div>';
-
-       html+='<div class="col-md-4"><label for="attr_image" class="control-label mb-1"> Image</label><input id="attr_image" name="attr_image[]" type="file" class="form-control" aria-required="true" aria-invalid="false" ></div>';
-
-       html+='<div class="col-md-2"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger btn-lg my-4" onclick=remove_more("'+loop_count+'")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>'; 
-
-       html+='</div></div></div></div>';
-
-       jQuery('#product_attr_box').append(html)
-   }
-   function remove_more(loop_count){
-        jQuery('#product_attr_'+loop_count).remove();
-   }
-
-   var loop_image_count=1; 
-   function add_image_more(){
-      loop_image_count++;
-      var html='<input id="piid" type="hidden" name="piid[]" value=""><div class="col-md-4 product_images_'+loop_image_count+'"><label for="images" class="control-label mb-1"> Image</label><input id="images" name="images[]" type="file" class="form-control" aria-required="true" aria-invalid="false" ></div>';
-      //product_images_box
-       html+='<div class="col-md-2 product_images_'+loop_image_count+'""><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger btn-lg my-4" onclick=remove_image_more("'+loop_image_count+'")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>'; 
-       jQuery('#product_images_box').append(html)
-   }
-
-   function remove_image_more(loop_image_count){
-        jQuery('.product_images_'+loop_image_count).remove();
-   }
-</script>
 @endsection

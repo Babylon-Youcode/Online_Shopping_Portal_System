@@ -64,6 +64,11 @@
                             <a href="dashboard">
                                 <i class="fas fa-band-aid"></i>brand</a>
                         </li>
+
+                        <li class="@yield('tax_select')">
+                            <a href="{{url('admin/tax')}}">
+                            <i class="fa fa-product-hunt"></i>Tax</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -109,6 +114,11 @@
                         <li class="@yield('brand_select')">
                             <a href="{{url('admin/brand')}}">
                             <i class="fas fa-band-aid"></i>brand</a>
+                        </li>
+
+                        <li class="@yield('tax_select')">
+                            <a href="{{url('admin/tax')}}">
+                            <i class="fa fa-product-hunt"></i>Tax</a>
                         </li>
 
                     </ul>
