@@ -6,6 +6,7 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\TaxController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,6 +74,10 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/tax/delete/{id}',[TaxController::class,'delete']);
     Route::get('admin/tax/status/{status}/{id}',[TaxController::class,'status']);
     
+    Route::get('admin/customer',[CustomerController::class,'index']);
+    Route::get('admin/customer/show/{id}',[CustomerController::class,'show']);
+    Route::get('admin/customer/status/{status}/{id}',[CustomerController::class,'status']);
+
     
     Route::get('admin/logout', function () {
         session()->forget('ADMIN_LOGIN');
