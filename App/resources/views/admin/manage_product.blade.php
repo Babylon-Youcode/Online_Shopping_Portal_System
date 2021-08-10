@@ -11,7 +11,9 @@
       $image_required="required";
    @endphp
 @endif
-<h1 class="mb10">Manage Product</h1>
+<div class="d-flex justify-content-center">
+   <h1 class="mb10">Manage Product</h1>
+</div>
 @if(session()->has('sku_error'))
 <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
    {{session('sku_error')}}  
@@ -38,12 +40,13 @@
    </button>
 </div> 
 @enderror
-<a href="{{url('admin/product')}}">
-<button type="button" class="btn btn-lg btn-info btn-block">
-Back
-</button>
-</a>
-<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<div class="d-flex justify-content-center my-4">
+   <a href="{{url('admin/product')}}">
+      <button type="button" class="btn btn-lg btn-info btn-block">
+      Back
+      </button>
+      </a>
+</div>
 <div class="row m-t-30">
    <div class="col-md-12">
       <form action="{{route('product.manage_product_process')}}" method="post" enctype="multipart/form-data">

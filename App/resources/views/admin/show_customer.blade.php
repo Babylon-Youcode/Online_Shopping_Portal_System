@@ -3,9 +3,11 @@
 @section('customer_select','active')
 @section('container')
                        
-    <h1 class="mb10">Customer Details</h1>
     
-    <div class="row m-t-30">
+    <div class="d-flex justify-content-center">
+     <h1 class="mb10 ">Customer Details</h1>
+    </div>
+    <div class="row m-t-30 d-flex justify-content-center">
         <div class="col-md-8">
             <!-- DATA TABLE-->
             <div class="table-responsive m-b-40">

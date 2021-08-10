@@ -9,13 +9,17 @@
             <span aria-hidden="true">×</span>
         </button>
     </div> 
-    @endif                     
-    <h1 class="mb10">Product</h1>
-    <a href="{{url('admin/product/manage_product')}}">
-        <button type="button" class="au-btn au-btn--block au-btn--green mb-20 my-4"">
-            Add Product
-        </button>
-    </a>
+    @endif 
+    <div class="d-flex justify-content-center">
+        <h1 class="mb10">Product</h1>
+    </div> 
+    <div class="d-flex justify-content-center">
+        <a href="{{url('admin/product/manage_product')}}">
+            <button type="button" class="au-btn au-btn--block au-btn--green mb-20 my-4"">
+                Add Product
+            </button>
+        </a>
+    </div>                     
     <div class="row m-t-30">
         <div class="col-md-12">
             <!-- DATA TABLE-->

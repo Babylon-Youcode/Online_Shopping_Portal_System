@@ -3,7 +3,7 @@
 @section('dashboard_select','active')
 @section('container')
 
-<div class="row">
-    <h1>Dashboard</h1>
+<div class="d-flex justify-content-center">
+    <h1 class="mb10 ">Dashboard</h1>
 </div>
 @endsection

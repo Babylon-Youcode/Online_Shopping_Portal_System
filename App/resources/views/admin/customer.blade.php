@@ -10,8 +10,9 @@
         </button>
     </div> 
     @endif                           
-    <h1 class="mb10">Customer</h1>
-    
+    <div class="d-flex justify-content-center">
+        <h1 class="mb10">Customer</h1>
+    </div> 
     <div class="row m-t-30">
         <div class="col-md-12">
             <!-- DATA TABLE-->

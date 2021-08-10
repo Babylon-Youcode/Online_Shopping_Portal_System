@@ -2,12 +2,16 @@
 @section('page_title','Manage Color')
 @section('color_select','active')
 @section('container')
-    <h1 class="mb10">Manage Color</h1>
-    <a href="{{url('admin/color')}}">
-        <button type="button" class="btn btn-lg btn-info btn-block">
-            Back
-        </button>
-    </a>
+    <div class="d-flex justify-content-center">
+        <h1 class="mb10">Manage Color</h1>
+    </div>
+    <div class="d-flex justify-content-center my-4">
+        <a href="{{url('admin/color')}}">
+            <button type="button" class="btn btn-lg btn-info btn-block">
+                Back
+            </button>
+        </a>
+    </div>
     <div class="row m-t-30">
         <div class="col-md-12">
         <div class="row">

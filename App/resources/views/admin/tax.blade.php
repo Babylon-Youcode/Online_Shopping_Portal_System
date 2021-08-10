@@ -10,12 +10,16 @@
         </button>
     </div> 
     @endif                           
-    <h1 class="mb10">Tax</h1>
-    <a href="{{url('admin/tax/manage_tax')}}">
-        <button type="button" class="btn btn-success">
-            Add Tax
-        </button>
-    </a>
+    <div class="d-flex justify-content-center">
+        <h1 class="mb10">Tax</h1>
+    </div> 
+    <div class="d-flex justify-content-center">
+        <a href="{{url('admin/tax/manage_tax')}}">
+            <button type="button" class="au-btn au-btn--block au-btn--green mb-20 my-4">
+                Add Tax
+            </button>
+        </a>
+    </div> 
     <div class="row m-t-30">
         <div class="col-md-12">
             <!-- DATA TABLE-->

@@ -2,12 +2,16 @@
 @section('page_title','Manage Coupon')
 @section('coupon_select','active')
 @section('container')
-    <h1 class="mb10">Manage Coupon</h1>
-    <a href="{{url('admin/coupon')}}">
-        <button type="button" class="btn btn-lg btn-info btn-block">
-            Back
-        </button>
-    </a>
+    <div class="d-flex justify-content-center">
+        <h1 class="mb10">Manage Coupon</h1>
+    </div>
+    <div class="d-flex justify-content-center my-4">
+        <a href="{{url('admin/coupon')}}">
+            <button type="button" class="btn btn-lg btn-info btn-block">
+                Back
+            </button>
+        </a>
+    </div>
     <div class="row m-t-30">
         <div class="col-md-12">
         <div class="row">

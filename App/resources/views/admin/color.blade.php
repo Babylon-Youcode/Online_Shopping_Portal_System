@@ -9,13 +9,18 @@
             <span aria-hidden="true">×</span>
         </button>
     </div> 
-    @endif                           
-    <h1 class="mb10">Color</h1>
-    <a href="{{url('admin/color/manage_color')}}">
-        <button type="button" class="au-btn au-btn--block au-btn--green mb-20 my-4"">
-            Add Color
-        </button>
-    </a>
+    @endif 
+    <div class="d-flex justify-content-center">
+        <h1 class="mb10">Color</h1>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a href="{{url('admin/color/manage_color')}}">
+            <button type="button" class="au-btn au-btn--block au-btn--green mb-20 my-4"">
+                Add Color
+            </button>
+        </a>
+    </div>
+
     <div class="row m-t-30">
         <div class="col-md-12">
             <!-- DATA TABLE-->
