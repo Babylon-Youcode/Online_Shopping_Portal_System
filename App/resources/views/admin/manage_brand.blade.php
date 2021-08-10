@@ -53,7 +53,7 @@
                                                 @enderror
 
                                                 @if($image!='')
-                                                    <img width="100px" src="{{asset('storage/media/brand/'.$image)}}"/>
+                                                    <a href="{{asset('storage/media/brand/'.$image)}}"><img width="100px" src="{{asset('storage/media/brand/'.$image)}}" class="my-4"/></a>
                                                 @endif
                                             </div>
                                             <div>

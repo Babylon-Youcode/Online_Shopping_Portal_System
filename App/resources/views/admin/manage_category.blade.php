@@ -62,8 +62,20 @@
                                     @enderror
 
                                     @if($category_image!='')
-                                            <a href="{{asset('storage/media/category/'.$category_image)}}" target="_blank"><img width="100px" src="{{asset('storage/media/category/'.$category_image)}}"/></a>
-                                        @endif
+                                            <a href="{{asset('storage/media/category/'.$category_image)}}" target="_blank"><img width="100px" src="{{asset('storage/media/category/'.$category_image)}}" class="my-4"/></a>
+                                        @endif<div class="form-group">
+                                            <label for="image" class="control-label mb-1"> Image</label>
+                                            <input id="image" name="image" type="file" class="form-control" aria-required="true" aria-invalid="false" {{$image_required}}>
+                                            @error('image')
+                                            <div class="alert alert-danger" role="alert">
+                                            {{$message}}		
+                                            </div>
+                                            @enderror
+
+                                            @if($image!='')
+                                                <img width="100px" src="{{asset('storage/media/brand/'.$image)}}"/>
+                                            @endif
+                                        </div>
                                 </div>
                                 <div>
                                     <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
