@@ -124,7 +124,7 @@
 
                         <li class="@yield('tax_select')">
                             <a href="{{url('admin/tax')}}">
-                            <i class="fa fa-product-hunt"></i>Tax</a>
+                            <i class="fas fa-percentage"></i>Tax</a>
                         </li>
 
                         <li class="@yield('customer_select')">
