@@ -6,7 +6,7 @@ HTML 5
 CSS3 Sass bootstrap
 JavaScript jquery
 
-###
--2 Back end : 
+###2 
+-Back end : 
 PHP Laravel
 MySQL
