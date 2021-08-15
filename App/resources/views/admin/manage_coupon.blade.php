@@ -47,21 +47,20 @@
                                     <div class="col-md-6">
                                         <label for="value" class="control-label mb-1">Type</label>
                                         <select id="type" name="type" class="form-control" required>
-                    @if($type=='Value')
-                    <option value="Value" selected>Value</option>
-                    <option value="Per">Per</option>
-                    @elseif($type=='Per')
-                    <option value="Value">Value</option>
-                    <option value="Per" selected>Per</option>
-                    @else
-                    <option value="Value">Value</option>
-                    <option value="Per">Per</option>
-                    @endif
+                                            @if($type=='Value')
+                                            <option value="Value" selected>Value</option>
+                                            <option value="Per">Per</option>
+                                            @elseif($type=='Per')
+                                            <option value="Value">Value</option>
+                                            <option value="Per" selected>Per</option>
+                                            @else
+                                            <option value="Value">Value</option>
+                                            <option value="Per">Per</option>
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -71,18 +70,17 @@
                                     <div class="col-md-6">
                                         <label for="code" class="control-label mb-1">IS One Time</label>
                                         <select id="is_one_time" name="is_one_time" class="form-control" required>
-                    @if($is_one_time=='1')
-                    <option value="1" selected>Yes</option>
-                    <option value="0">No</option>
-                    @else
-                    <option value="1">Yes</option>
-                    <option value="0" selected>No</option>
-                    @endif
+                                            @if($is_one_time=='1')
+                                            <option value="1" selected>Yes</option>
+                                            <option value="0">No</option>
+                                            @else
+                                            <option value="1">Yes</option>
+                                            <option value="0" selected>No</option>
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
                             </div>
-
                             <div>
                                 <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                                     Submit

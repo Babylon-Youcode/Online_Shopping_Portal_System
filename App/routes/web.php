@@ -2,12 +2,14 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\TaxController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\HomeBannerController;
+use App\Http\Controllers\Admin\OrderController;
 
 use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +26,36 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[FrontController::class,'index']);
+Route::get('category/{id}',[FrontController::class,'category']);
+Route::get('product/{id}',[FrontController::class,'product']);
+Route::post('add_to_cart',[FrontController::class,'add_to_cart']);
+Route::get('cart',[FrontController::class,'cart']);
+Route::get('search/{str}',[FrontController::class,'search']);
+Route::get('registration',[FrontController::class,'registration']);
+Route::post('registration_process',[FrontController::class,'registration_process'])->name('registration.registration_process');
+Route::post('login_process',[FrontController::class,'login_process'])->name('login.login_process');
+Route::get('logout', function () {
+    session()->forget('FRONT_USER_LOGIN');
+    session()->forget('FRONT_USER_ID');
+    session()->forget('FRONT_USER_NAME');
+    session()->forget('USER_TEMP_ID');
+    return redirect('/');
+});
+
+Route::get('/checkout',[FrontController::class,'checkout']);
+Route::post('apply_coupon_code',[FrontController::class,'apply_coupon_code']);
+Route::post('remove_coupon_code',[FrontController::class,'remove_coupon_code']);
+Route::post('place_order',[FrontController::class,'place_order']);
+Route::get('/order_placed',[FrontController::class,'order_placed']);
+Route::get('/order_fail',[FrontController::class,'order_fail']);
+Route::get('/instamojo_payment_redirect',[FrontController::class,'instamojo_payment_redirect']);
+
+Route::group(['middleware'=>'user_auth'],function(){
+    Route::get('/order',[FrontController::class,'order']);
+    Route::get('/order_detail/{id}',[FrontController::class,'order_detail']);
+});
+
+
 Route::get('admin',[AdminController::class,'index']);
 Route::post('admin/auth',[AdminController::class,'auth'])->name('admin.auth');
 
@@ -43,6 +75,13 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::post('admin/coupon/manage_coupon_process',[CouponController::class,'manage_coupon_process'])->name('coupon.manage_coupon_process');
     Route::get('admin/coupon/delete/{id}',[CouponController::class,'delete']);
     Route::get('admin/coupon/status/{status}/{id}',[CouponController::class,'status']);
+
+    Route::get('admin/size',[SizeController::class,'index']);
+    Route::get('admin/size/manage_size',[SizeController::class,'manage_size']);
+    Route::get('admin/size/manage_size/{id}',[SizeController::class,'manage_size']);
+    Route::post('admin/size/manage_size_process',[SizeController::class,'manage_size_process'])->name('size.manage_size_process');
+    Route::get('admin/cousizepon/delete/{id}',[SizeController::class,'delete']);
+    Route::get('admin/size/status/{status}/{id}',[SizeController::class,'status']);
 
     Route::get('admin/color',[ColorController::class,'index']);
     Route::get('admin/color/manage_color',[ColorController::class,'manage_color']);
@@ -68,12 +107,6 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/brand/delete/{id}',[BrandController::class,'delete']);
     Route::get('admin/brand/status/{status}/{id}',[BrandController::class,'status']);
 
-    Route::get('admin/tax',[TaxController::class,'index']);
-    Route::get('admin/tax/manage_tax',[TaxController::class,'manage_tax']);
-    Route::get('admin/tax/manage_tax/{id}',[TaxController::class,'manage_tax']);
-    Route::post('admin/tax/manage_tax_process',[TaxController::class,'manage_tax_process'])->name('tax.manage_tax_process');
-    Route::get('admin/tax/delete/{id}',[TaxController::class,'delete']);
-    Route::get('admin/tax/status/{status}/{id}',[TaxController::class,'status']);
 
     Route::get('admin/tax',[TaxController::class,'index']);
     Route::get('admin/tax/manage_tax',[TaxController::class,'manage_tax']);
@@ -93,6 +126,9 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::post('admin/home_banner/manage_home_banner_process',[HomeBannerController::class,'manage_home_banner_process'])->name('home_banner.manage_home_banner_process');
     Route::get('admin/home_banner/delete/{id}',[HomeBannerController::class,'delete']);
     Route::get('admin/home_banner/status/{status}/{id}',[HomeBannerController::class,'status']);
+
+    Route::get('admin/order',[OrderController::class,'index']);
+    Route::get('admin/order_detail/{id}',[OrderController::class,'order_detail']);
     
     Route::get('admin/logout', function () {
         session()->forget('ADMIN_LOGIN');

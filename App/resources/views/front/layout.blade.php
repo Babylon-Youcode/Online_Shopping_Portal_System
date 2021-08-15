@@ -18,24 +18,15 @@
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    
+      
+    <script>
+    var PRODUCT_IMAGE="{{asset('storage/media/')}}";
+    </script>
 
   </head>
   <body> 
-   <!-- wpf loader Two -->
-    <div id="wpf-loader-two">          
-      <div class="wpf-loader-two-inner">
-        <span>Loading</span>
-      </div>
-    </div> 
-    <!-- / wpf loader Two -->       
-  <!-- SCROLL TOP BUTTON -->
-    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
-  <!-- END SCROLL TOP BUTTON -->
-
-
-  <!-- Start header section -->
-  <header id="aa-header">
+   <!-- Start header section -->
+   <header id="aa-header">
     <!-- start header top  -->
     <div class="aa-header-top">
       <div class="container">
@@ -58,17 +49,22 @@
                     <li class="hidden-xs"><a class="mx-4" href="{{url('admin')}}">admin</a></li>
                   </ul>
                 </div>
-               
                 <!-- / cellphone -->
               </div>
               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  <li><a href="javascript:void(0)">My Account</a></li>
+                  <li><a href="{{url('/order')}}">My Order</a></li>
                   
-                  <li class="hidden-xs"><a href="javascript:void(0)">My Cart</a></li>
-                  <li class="hidden-xs"><a href="javascript:void(0)">Checkout</a></li>
-                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                  <li class="hidden-xs"><a href="{{url('/cart')}}">My Cart</a></li>
+                  <li class="hidden-xs"><a href="{{url('/checkout')}}">Checkout</a></li>
+                  @if(session()->has('FRONT_USER_LOGIN')!=null)
+                  <li><a href="{{url('/logout')}}">Logout</a></li>
+                  @else
+                    <li><a href="" data-toggle="modal" data-target="#login-modal">Login or Register</a></li>
+                  @endif
+                  
+
                 </ul>
               </div>
             </div>
@@ -90,56 +86,17 @@
                 <a href="{{url('/')}}">
                   <img src="{{asset('admin_assets/images/logo.png')}}"alt="KhaliPhone" width="250px">
                 </a>
-                <!-- img based logo -->
-                <!-- <a href="javascript:void(0)"><img src="img/logo.jpg" alt="logo img"></a> -->
               </div>
               <!-- / logo  -->
                <!-- cart box -->
+              
               <div class="aa-cartbox">
-                <a class="aa-cart-link" href="#">
+                <a class="aa-cart-link" href="{{url('/cart')}}" >
                   <span class="fa fa-shopping-basket"></span>
                   <span class="aa-cart-title">SHOPPING CART</span>
-                  <span class="aa-cart-notify">2</span>
                 </a>
-                <div class="aa-cartbox-summary">
-                  <ul>
-                    <li>
-                      <a class="aa-cartbox-img" href="#"><img src="{{asset('front_assets/img/woman-small-2.jpg')}}" alt="img"></a>
-                      <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
-                      </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                    </li>
-                    <li>
-                      <a class="aa-cartbox-img" href="#"><img src="{{asset('front_assets/img/woman-small-1.jpg')}}" alt="img"></a>
-                      <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
-                      </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                    </li>                    
-                    <li>
-                      <span class="aa-cartbox-total-title">
-                        Total
-                      </span>
-                      <span class="aa-cartbox-total-price">
-                        $500
-                      </span>
-                    </li>
-                  </ul>
-                  <a class="aa-cartbox-checkout aa-primary-btn" href="javascript:void(0)">Checkout</a>
-                </div>
               </div>
-              <!-- / cart box -->
-              <!-- search box -->
-              <div class="aa-search-box">
-                <form action="">
-                  <input type="text" name="" id="" placeholder="Search here ex. 'man' ">
-                  <button type="submit"><span class="fa fa-search"></span></button>
-                </form>
-              </div>
-              <!-- / search box -->             
+              <!-- / cart box -->           
             </div>
           </div>
         </div>
@@ -231,9 +188,9 @@
                   <div class="aa-footer-widget">
                     <h3>Contact Us</h3>
                     <address>
-                      <p> 25 Astor Pl, NY 10003, USA</p>
-                      <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
-                      <p><span class="fa fa-envelope"></span>dailyshop@gmail.com</p>
+                      <p> ADRASSE</p>
+                      <p><span class="fa fa-phone"></span>0612345678</p>
+                      <p><span class="fa fa-envelope"></span>khaliphone@gmail.com</p>
                     </address>
                     <div class="aa-footer-social">
                       <a href="#"><span class="fa fa-facebook"></span></a>
@@ -250,7 +207,20 @@
       </div>
      </div>
     </div>
+  </footer>
+  <!-- / footer -->
+  @php
+  if(isset($_COOKIE['login_email']) && isset($_COOKIE['login_pwd'])){
+    $login_email=$_COOKIE['login_email'];
+    $login_pwd=$_COOKIE['login_pwd'];
+    $is_remember="checked='checked'";
+  } else{
+    $login_email='';
+    $login_pwd='';
+    $is_remember="";
+  }   
 
+  @endphp    
   <!-- Login Modal -->  
   <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -258,17 +228,20 @@
         <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4>Login or Register</h4>
-          <form class="aa-login-form" action="">
-            <label for="">Username or Email address<span>*</span></label>
-            <input type="text" placeholder="Username or email">
+          <form class="aa-login-form" id="frmLogin">
+            <label for="">Email address<span>*</span></label>
+            <input type="email" placeholder="Email" name="str_login_email" required value="{{$login_email}}">
             <label for="">Password<span>*</span></label>
-            <input type="password" placeholder="Password">
-            <button class="aa-browse-btn" type="submit">Login</button>
-            <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
-            <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
+            <input type="password" placeholder="Password" name="str_login_password" required value="{{$login_pwd}}">
+            <button class="aa-browse-btn" type="submit" id="btnLogin">Login</button>
+            <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme" name="rememberme" {{$is_remember}}> Remember me </label>
+
+            <div id="login_msg"></div>
+
             <div class="aa-register-now">
-              Don't have an account?<a href="javascript:void(0)">Register now!</a>
+              Don't have an account?<a href="{{url('registration')}}">Register now!</a>
             </div>
+            @csrf
           </form>
         </div>                        
       </div><!-- /.modal-content -->

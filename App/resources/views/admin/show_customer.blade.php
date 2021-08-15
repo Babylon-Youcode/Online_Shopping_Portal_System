@@ -2,8 +2,6 @@
 @section('page_title','Show Customer Details')
 @section('customer_select','active')
 @section('container')
-                       
-    
     <div class="d-flex justify-content-center">
      <h1 class="mb10 ">Customer Details</h1>
     </div>
@@ -64,6 +62,5 @@
             </div>
             <!-- END DATA TABLE-->
         </div>
-    </div>
-                        
+    </div>                      
 @endsection

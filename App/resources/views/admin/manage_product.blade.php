@@ -11,9 +11,6 @@
       $image_required="required";
    @endphp
 @endif
-<div class="d-flex justify-content-center">
-   <h1 class="mb10">Manage Product</h1>
-</div>
 @if(session()->has('sku_error'))
 <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
    {{session('sku_error')}}  
@@ -40,13 +37,19 @@
    </button>
 </div> 
 @enderror
+
+
+<div class="d-flex justify-content-center">
+   <h1 class="mb10">Manage Product</h1>    
+</div>
 <div class="d-flex justify-content-center my-4">
    <a href="{{url('admin/product')}}">
       <button type="button" class="btn btn-lg btn-info btn-block">
-      Back
+        Back
       </button>
-      </a>
+   </a>
 </div>
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 <div class="row m-t-30">
    <div class="col-md-12">
       <form action="{{route('product.manage_product_process')}}" method="post" enctype="multipart/form-data">
@@ -82,7 +85,7 @@
                         </div>
                         @enderror
                         @if($image!='')
-                           <a href="{{asset('storage/media/'.$image)}}" target="_blank"><img width="100px" src="{{asset('storage/media/'.$image)}}"class="my-4" /></a>
+                           <a href="{{asset('storage/media/'.$image)}}" target="_blank"><img width="100px" src="{{asset('storage/media/'.$image)}}"/></a>
                         @endif
                      </div>
                      <div class="form-group">
@@ -132,10 +135,6 @@
                         <textarea id="desc" name="desc" type="text" class="form-control" aria-required="true" aria-invalid="false" required>{{$desc}}</textarea>
                      </div>
                      <div class="form-group">
-                        <label for="keywords" class="control-label mb-1"> Keywords</label>
-                        <textarea id="keywords" name="keywords" type="text" class="form-control" aria-required="true" aria-invalid="false" required>{{$keywords}}</textarea>
-                     </div>
-                     <div class="form-group">
                         <label for="technical_specification" class="control-label mb-1"> Technical Specification</label>
                         <textarea id="technical_specification" name="technical_specification" type="text" class="form-control" aria-required="true" aria-invalid="false" required>{{$technical_specification}}</textarea>
                      </div>
@@ -150,84 +149,27 @@
 
                      <div class="form-group">
                         <div class="row">
-                           <div class="col-md-8">
+                           <div class="col-md-6">
                               <label for="model" class="control-label mb-1"> Lead Time</label>
                               <input id="lead_time" value="{{$lead_time}}" name="lead_time" type="text" class="form-control" aria-required="true" aria-invalid="false">
                            </div>
-                           <div class="col-md-4">
-                              <label for="model" class="control-label mb-1"> Tax</label>
-                              <select id="tax_id" name="tax_id" class="form-control" required>
-                                 <option value="">Select Tax</option>
-                                 @foreach($taxes as $list)
-                                 @if($tax_id==$list->id)
-                                 <option selected value="{{$list->id}}">
-                                    @else
-                                 <option value="{{$list->id}}">
-                                    @endif
-                                    {{$list->tax_desc}}
-                                 </option>
-                                 @endforeach
-                              </select>
-                           </div>
-                          
-                        </div>
-                     </div>
-
-                     <div class="form-group">
-                        <div class="row">
-                           <div class="col-md-3">
+                           <div class="col-md-6">
                               <label for="model" class="control-label mb-1"> IS Promo	</label>
                               <select id="is_promo" name="is_promo" class="form-control" required>
-                     @if($is_promo=='1')
-                     <option value="1" selected>Yes</option>
-                     <option value="0">No</option>
-                     @else
-                     <option value="1">Yes</option>
-                     <option value="0" selected>No</option>
-                     @endif
-                              </select>
-                           </div>
-                           <div class="col-md-3">
-                              <label for="model" class="control-label mb-1"> IS Featured	</label>
-                              <select id="is_featured" name="is_featured" class="form-control" required>
-                     @if($is_featured=='1')
-                     <option value="1" selected>Yes</option>
-                     <option value="0">No</option>
-                     @else
-                     <option value="1">Yes</option>
-                     <option value="0" selected>No</option>
-                     @endif
-                              </select>
-                           </div>
-                           <div class="col-md-3">
-                              <label for="model" class="control-label mb-1"> IS Tranding	</label>
-                              <select id="is_tranding" name="is_tranding" class="form-control" required>
-                     @if($is_tranding=='1')
-                     <option value="1" selected>Yes</option>
-                     <option value="0">No</option>
-                     @else
-                     <option value="1">Yes</option>
-                     <option value="0" selected>No</option>
-                     @endif
-                              </select>
-                           </div>
-                           <div class="col-md-3">
-                              <label for="model" class="control-label mb-1"> IS Discounted	</label>
-                              <select id="is_discounted" name="is_discounted" class="form-control" required>
-                     @if($is_discounted=='1')
-                     <option value="1" selected>Yes</option>
-                     <option value="0">No</option>
-                     @else
-                     <option value="1">Yes</option>
-                     <option value="0" selected>No</option>
-                     @endif
+                                 @if($is_promo=='1')
+                                 <option value="1" selected>Yes</option>
+                                 <option value="0">No</option>
+                                 @else
+                                 <option value="1">Yes</option>
+                                 <option value="0" selected>No</option>
+                                 @endif
                               </select>
                            </div>
                         </div>
-                     </div>
+                     </div>  
                   </div>
                </div>
-            </div>
+            </div>   
             <h2 class="mb10 ml15">Product Images</h2>
             <div class="col-lg-12">
                <div class="card">
@@ -248,7 +190,7 @@
                               <input id="images" name="images[]" type="file" class="form-control" aria-required="true" aria-invalid="false" >
 
                               @if($pIArr['images']!='')
-                                 <a href="{{asset('storage/media/'.$pIArr['images'])}}" target="_blank"><img width="100px" src="{{asset('storage/media/'.$pIArr['images'])}}" class="my-4"/></a>
+                                 <a href="{{asset('storage/media/'.$pIArr['images'])}}" target="_blank"><img width="100px" src="{{asset('storage/media/'.$pIArr['images'])}}"/></a>
                               @endif
                            </div>
                            
@@ -257,7 +199,7 @@
                               &nbsp;&nbsp;&nbsp;</label>
                               
                               @if($loop_count_num==2)
-                                <button type="button" class="au-btn au-btn--block au-btn--green mb-20" onclick="add_image_more()">
+                                <button type="button" class="btn btn-success btn-lg my-4" onclick="add_image_more()">
                                 <i class="fa fa-plus"></i>&nbsp; Add</button>
                               @else
                               <a href="{{url('admin/product/product_images_delete/')}}/{{$pIArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg">
@@ -299,7 +241,17 @@
                               <label for="price" class="control-label mb-1"> Price</label>
                               <input id="price" name="price[]" type="number" class="form-control" aria-required="true" aria-invalid="false" value="{{$pAArr['price']}}" required>
                            </div>
-                           
+                           <div class="col-md-3">
+                              <label for="size_id" class="control-label mb-1"> Size</label>
+                              <select id="size_id" name="size_id[]" class="form-control">
+                                 <option value="">Select</option>
+                                 @foreach($sizes as $list)
+                                   
+                                 <option value="{{$list->id}}" selected>{{$list->size}}</option>
+                                    
+                                 @endforeach
+                              </select>
+                           </div>
                            <div class="col-md-3">
                               <label for="color_id" class="control-label mb-1"> Color</label>
                               <select id="color_id" name="color_id[]" class="form-control">
@@ -322,7 +274,7 @@
                               <input id="attr_image" name="attr_image[]" type="file" class="form-control" aria-required="true" aria-invalid="false" >
 
                               @if($pAArr['attr_image']!='')
-                                 <img width="100px" src="{{asset('storage/media/'.$pAArr['attr_image'])}}" class="my-4"/>
+                                 <img width="100px" src="{{asset('storage/media/'.$pAArr['attr_image'])}}"/>
                               @endif
                            </div>
                            <div class="col-md-2">
@@ -330,10 +282,10 @@
                               &nbsp;&nbsp;&nbsp;</label>
                               
                               @if($loop_count_num==2)
-                                <button type="button" class="au-btn au-btn--block au-btn--green mb-20" onclick="add_more()">
+                                <button type="button" class="btn btn-success btn-lg my-4" onclick="add_more()">
                                 <i class="fa fa-plus"></i>&nbsp; Add</button>
                               @else
-                              <a href="{{url('admin/product/product_attr_delete/')}}/{{$pAArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg my-4">
+                              <a href="{{url('admin/product/product_attr_delete/')}}/{{$pAArr['id']}}/{{$id}}"><button type="button" class="btn btn-danger btn-lg">
                                 <i class="fa fa-minus"></i>&nbsp; Remove</button></a>
                               @endif  
 

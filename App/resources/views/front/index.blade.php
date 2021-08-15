@@ -1,5 +1,5 @@
 @extends('front/layout')
-
+@section('page_title','Home Page')
 @section('container')
 
 <section id="aa-slider">
@@ -94,20 +94,22 @@
                         <li>
                           <figure>
                             <a class="aa-product-img" href="{{url('product/'.$productArr->slug)}}"><img src="{{asset('storage/media/'.$productArr->image)}}" alt="{{$productArr->name}}"></a>
-                            <a class="aa-add-card-btn" href="{{url('product/'.$productArr->slug)}}"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                            <a class="aa-add-card-btn" href="javascript:void(0)" onclick="home_add_to_cart('{{$productArr->id}}','{{$home_product_attr[$productArr->id][0]->size}}','{{$home_product_attr[$productArr->id][0]->color}}')"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                             <figcaption>
                               <h4 class="aa-product-title"><a href="{{url('product/'.$productArr->slug)}}">{{$productArr->name}}</a></h4>
-                              <span class="aa-product-price">Rs {{$home_product_attr[$productArr->id][0]->price}}</span><span class="aa-product-price"><del>Rs {{$home_product_attr[$productArr->id][0]->mrp}}</del></span>
+                              <span class="aa-product-price">DHS {{$home_product_attr[$productArr->id][0]->price}}</span><span class="aa-product-price"><del>DHS {{$home_product_attr[$productArr->id][0]->mrp}}</del></span>
                             </figcaption>
                           </figure>                          
                         </li>  
                         @endforeach    
                         @else
-                        <li>
-                          <figure>
-                            No data found
-                          <figure>
-                        <li>
+                        <div class="d-flex justify-content-center">
+                          <li>
+                            <figure>
+                              No data found
+                            <figure>
+                          <li>
+                      </div>
                         @endif
                       </ul>
                     </div>
@@ -121,130 +123,7 @@
     </div>
   </section>
   <!-- / Products section -->
-  <!-- banner section -->
-  <section id="aa-banner">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">        
-          <div class="row">
-            <div class="aa-banner-area">
-            <a href="#"><img src="{{asset('front_assets/img/fashion-banner.jpg')}}" alt="fashion banner img"></a>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- popular section -->
-  <section id="aa-popular-category">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="aa-popular-category-area">
-              <!-- start prduct navigation -->
-             <ul class="nav nav-tabs aa-products-tab">
-                <li class="active"><a href="#featured" data-toggle="tab">Featured</a></li>
-                <li><a href="#tranding" data-toggle="tab">Tranding</a></li>
-                <li><a href="#discounted" data-toggle="tab">Discounted</a></li>                    
-              </ul>
-              <!-- Tab panes -->
-              <div class="tab-content">
-                <!-- Start men featured category -->
-                <div class="tab-pane fade in active" id="featured">
-                  <ul class="aa-product-catg aa-featured-slider">
-                    <!-- start single product item -->
-                    
-                    
-                    @if(isset($home_featured_product[$list->id][0]))
-                       @foreach($home_featured_product[$list->id] as $productArr)
-                        <li>
-                          <figure>
-                            <a class="aa-product-img" href="{{url('product/'.$productArr->slug)}}"><img src="{{asset('storage/media/'.$productArr->image)}}" alt="{{$productArr->name}}"></a>
-                            <a class="aa-add-card-btn" href="{{url('product/'.$productArr->slug)}}"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                            <figcaption>
-                              <h4 class="aa-product-title"><a href="{{url('product/'.$productArr->slug)}}">{{$productArr->name}}</a></h4>
-                              <span class="aa-product-price">Rs {{$home_featured_product_attr[$productArr->id][0]->price}}</span><span class="aa-product-price"><del>Rs {{$home_featured_product_attr[$productArr->id][0]->mrp}}</del></span>
-                            </figcaption>
-                          </figure>                          
-                        </li>  
-                        @endforeach    
-                        @else
-                        <li>
-                          <figure>
-                            No data found
-                          <figure>
-                        <li>
-                        @endif                                                                                   
-                  </ul>
-                </div>
-                <!-- / popular product category -->
-                
-                <!-- start tranding product category -->
-                <div class="tab-pane fade" id="tranding">
-                 <ul class="aa-product-catg aa-tranding-slider">
-                    <!-- start single product item -->
-                    @if(isset($home_tranding_product[$list->id][0]))
-                       @foreach($home_tranding_product[$list->id] as $productArr)
-                        <li>
-                          <figure>
-                            <a class="aa-product-img" href="{{url('product/'.$productArr->slug)}}"><img src="{{asset('storage/media/'.$productArr->image)}}" alt="{{$productArr->name}}"></a>
-                            <a class="aa-add-card-btn" href="{{url('product/'.$productArr->slug)}}"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                            <figcaption>
-                              <h4 class="aa-product-title"><a href="{{url('product/'.$productArr->slug)}}">{{$productArr->name}}</a></h4>
-                              <span class="aa-product-price">Rs {{$home_tranding_product_attr[$productArr->id][0]->price}}</span><span class="aa-product-price"><del>Rs {{$home_tranding_product_attr[$productArr->id][0]->mrp}}</del></span>
-                            </figcaption>
-                          </figure>                          
-                        </li>  
-                        @endforeach    
-                        @else
-                        <li>
-                          <figure>
-                            No data found
-                          <figure>
-                        <li>
-                        @endif                                                                                       
-                  </ul>
-                </div>
-                <!-- / featured product category -->
 
-                <!-- start discounted product category -->
-                <div class="tab-pane fade" id="discounted">
-                  <ul class="aa-product-catg aa-discounted-slider">
-                    <!-- start single product item -->
-                    
-                    @if(isset($home_discounted_product[$list->id][0]))
-                       @foreach($home_discounted_product[$list->id] as $productArr)
-                        <li>
-                          <figure>
-                            <a class="aa-product-img" href="{{url('product/'.$productArr->slug)}}"><img src="{{asset('storage/media/'.$productArr->image)}}" alt="{{$productArr->name}}"></a>
-                            <a class="aa-add-card-btn" href="{{url('product/'.$productArr->slug)}}"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                            <figcaption>
-                              <h4 class="aa-product-title"><a href="{{url('product/'.$productArr->slug)}}">{{$productArr->name}}</a></h4>
-                              <span class="aa-product-price">Rs {{$home_discounted_product_attr[$productArr->id][0]->price}}</span><span class="aa-product-price"><del>Rs {{$home_discounted_product_attr[$productArr->id][0]->mrp}}</del></span>
-                            </figcaption>
-                          </figure>                          
-                        </li>  
-                        @endforeach    
-                        @else
-                        <li>
-                          <figure>
-                            No data found
-                          </figure>
-                        <li>
-                        @endif                                                                                     
-                  </ul>
-                </div>
-                <!-- / latest product category -->              
-              </div>
-            </div>
-          </div> 
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- / popular section -->
-  <!-- Support section -->
   <section id="aa-support">
     <div class="container">
       <div class="row">
@@ -298,5 +177,12 @@
     </div>
   </section>
   <!-- / Client Brand -->
-
+  <input type="hidden" id="qty" value="1"/>
+  <form id="frmAddToCart">
+    <input type="hidden" id="size_id" name="size_id"/>
+    <input type="hidden" id="color_id" name="color_id"/>
+    <input type="hidden" id="pqty" name="pqty"/>
+    <input type="hidden" id="product_id" name="product_id"/>           
+    @csrf
+  </form>                  
 @endsection

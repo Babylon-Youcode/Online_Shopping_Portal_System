@@ -15,77 +15,6 @@
 
 <body>
 <div class="page-wrapper">
-        <!-- HEADER MOBILE-->
-        <header class="header-mobile d-block d-lg-none">
-            <div class="header-mobile__bar">
-                <div class="container-fluid">
-                    <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            {{Config::get('constants.site_name')}}
-                        </a>
-                        <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <nav class="navbar-mobile">
-                <div class="container-fluid">
-                    <ul class="navbar-mobile__list list-unstyled">
-
-                        <li class="@yield('dashboard_select')">
-                            <a href="{{url('admin/dashboard')}}">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                        </li>
-                       
-                        <li class="@yield('product_select')">
-                            <a href="{{url('admin/product')}}">
-                            <i class="fa fa-tag"></i>Product</a>
-                        </li>
-
-                        <li class="@yield('category_select')">
-                            <a href="{{url('admin/category')}}">
-                                <i class="fa fa-list-alt"></i>Category</a>
-                        </li>
-
-                        <li class="@yield('coupon_select')">
-                            <a href="{{url('admin/coupon')}}">
-                            <i class="fas fa-tags"></i>Coupon</a>
-                        </li> 
-                        
-                        <li class="@yield('color_select')">
-                            <a href="{{url('admin/color')}}">
-                            <i class="fas fa-calendar-alt"></i>Color</a>
-                        </li>
-
-                        <li>
-                            <a href="dashboard">
-                                <i class="fas fa-band-aid"></i>brand</a>
-                        </li>
-
-                        <li class="@yield('tax_select')">
-                            <a href="{{url('admin/tax')}}">
-                            <i class="fa fa-product-hunt"></i>Tax</a>
-                        </li>
-
-                        <li class="@yield('customer_select')">
-                            <a href="{{url('admin/customer')}}">
-                            <i class="fa fa-user"></i>Customer</a>
-                        </li>
-
-                        <li class="@yield('home_banner_select')">
-                            <a href="{{url('admin/home_banner')}}">
-                            <i class="fas fa-images"></i>Home Banner</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- END HEADER MOBILE-->
-
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
@@ -127,11 +56,6 @@
                             <i class="fas fa-band-aid"></i>brand</a>
                         </li>
 
-                        <li class="@yield('tax_select')">
-                            <a href="{{url('admin/tax')}}">
-                            <i class="fas fa-percentage"></i>Tax</a>
-                        </li>
-
                         <li class="@yield('customer_select')">
                             <a href="{{url('admin/customer')}}">
                             <i class="fa fa-user"></i>Customer</a>
@@ -140,6 +64,15 @@
                         <li class="@yield('home_banner_select')">
                             <a href="{{url('admin/home_banner')}}">
                             <i class="fas fa-images"></i>Home Banner</a>
+                        </li>
+
+                        <li class="@yield('size_select')">
+                            <a href="{{url('admin/size')}}">
+                                <i class="fas fa-window-maximize"></i>Size</a>
+                        </li>
+                        <li class="@yield('category_order')">
+                            <a href="{{url('admin/order')}}">
+                                <i class="fas fa-list"></i>Order</a>
                         </li>
 
                     </ul>
@@ -162,7 +95,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">admin</a>
+                                            <a class="" href="#">admin</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                            

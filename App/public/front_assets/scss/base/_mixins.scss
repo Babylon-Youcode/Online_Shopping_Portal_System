@@ -78,14 +78,7 @@
           transform-origin: $origin;
 }
 
-// 	usages
-//  .test {
-//   @include skew(25,10);
-//   @include transform-origin(top left);
-//   @include rotate(60);
-//   @include scale(2);
-//   @include translate(5,5);    
-// }
+
 
 // box-shadow
 
@@ -95,8 +88,5 @@
       -moz-box-shadow:$top $left $blur $color #{$inset};
       box-shadow:$top $left $blur $color #{$inset};
     }
-// usages    
-// .test{
-// 	@include box-shadow(inset, 0px, 1px, 1px, rgba(0, 0, 0, 0.5));
-// }    
+  
 
