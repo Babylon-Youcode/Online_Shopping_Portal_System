@@ -1,7 +1,12 @@
 #  KHALIPHONE
 ## Online Shopping Portal System
-###1                            2
--Front-end :                   -Back end : 
-HTML 5                          PHP Laravel
-CSS3 Sass bootstrap             MySQL
+1                            
+-Front-end :                   
+HTML 5                          
+CSS3 Sass bootstrap             
 JavaScript jquery
+
+2
+-Back end : 
+PHP Laravel
+MySQL
