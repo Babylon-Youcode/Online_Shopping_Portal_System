@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
-use App\Http\Controllers\Admin\TaxController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\HomeBannerController;
 use App\Http\Controllers\Admin\OrderController;
@@ -48,7 +47,6 @@ Route::post('remove_coupon_code',[FrontController::class,'remove_coupon_code']);
 Route::post('place_order',[FrontController::class,'place_order']);
 Route::get('/order_placed',[FrontController::class,'order_placed']);
 Route::get('/order_fail',[FrontController::class,'order_fail']);
-Route::get('/instamojo_payment_redirect',[FrontController::class,'instamojo_payment_redirect']);
 
 Route::group(['middleware'=>'user_auth'],function(){
     Route::get('/order',[FrontController::class,'order']);
@@ -107,13 +105,6 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/brand/delete/{id}',[BrandController::class,'delete']);
     Route::get('admin/brand/status/{status}/{id}',[BrandController::class,'status']);
 
-
-    Route::get('admin/tax',[TaxController::class,'index']);
-    Route::get('admin/tax/manage_tax',[TaxController::class,'manage_tax']);
-    Route::get('admin/tax/manage_tax/{id}',[TaxController::class,'manage_tax']);
-    Route::post('admin/tax/manage_tax_process',[TaxController::class,'manage_tax_process'])->name('tax.manage_tax_process');
-    Route::get('admin/tax/delete/{id}',[TaxController::class,'delete']);
-    Route::get('admin/tax/status/{status}/{id}',[TaxController::class,'status']);
 
     Route::get('admin/customer',[CustomerController::class,'index']);
     Route::get('admin/customer/show/{id}',[CustomerController::class,'show']);

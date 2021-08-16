@@ -79,7 +79,7 @@
                                         Submit
                                     </button>
                                 </div>
-                                <input type="hidden" name="id" value="{{$id}}"/>
+                                {{-- <input type="hidden" name="id" value="{{$id}}"/> --}}
                             </form>
                         </div>
                     </div>

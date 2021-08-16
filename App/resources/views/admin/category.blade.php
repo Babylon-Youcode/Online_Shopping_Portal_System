@@ -11,11 +11,11 @@
     </div> 
     @endif 
     <div class="d-flex justify-content-center">
-        <h1 class="mb10">Category</h1>
+        <h1 >Category</h1>
     </div>
     <div class="d-flex justify-content-center">
         <a href="{{url('admin/category/manage_category')}}">
-            <button type="button" class="au-btn au-btn--block au-btn--green mb-20 my-4"">
+            <button type="button" class="au-btn au-btn--block au-btn--green my-4">
                 Add Category
             </button>
         </a>

@@ -80,7 +80,4 @@ var loop_count=1;
 
    function remove_image_more(loop_image_count){
         jQuery('.product_images_'+loop_image_count).remove();
-   }
-   CKEDITOR.replace('short_desc');
-   CKEDITOR.replace('desc');
-   CKEDITOR.replace('technical_specification');   
+   }   
